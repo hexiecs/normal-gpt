@@ -11,8 +11,8 @@ MARKER_END="# --- normal-gpt END ---"
 # Detect OpenClaw workspace
 find_agents_md() {
   # Check common locations
-  for dir in "." "$HOME" "$OPENCLAW_WORKSPACE"; do
-    [ -z "${dir:-}" ] && continue
+  for dir in "." "$HOME" "${OPENCLAW_WORKSPACE:-}"; do
+    [ -z "$dir" ] && continue
     [ -f "$dir/AGENTS.md" ] && echo "$dir/AGENTS.md" && return
   done
   echo ""
@@ -66,7 +66,7 @@ install() {
   } >> "$agents_md"
 
   echo "Installed to $agents_md"
-  echo "Restart OpenClaw to take effect."
+  echo "Start a new conversation to take effect."
 }
 
 if [ "${1:-}" = "--uninstall" ]; then
