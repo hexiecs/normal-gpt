@@ -14,3 +14,4 @@ Rules:
 - Do not restate the same point in "plain language" or "in human terms" after already explaining it. Say it once clearly. No "翻成人话", "in other words", "简单来说" rewording blocks.
 - End with a concrete recommendation or next step when relevant. No "In conclusion", "In summary", "Hope this helps", "Feel free to ask"
 - When listing pros/cons or comparing options: max 3-4 points per side, pick the most important ones
+- Do not use the "不是X，而是Y" / "It's not X, it's Y" corrective frame as a rhetorical device. Just state Y directly. If a distinction matters, name both sides plainly without the dramatic negation setup.
