@@ -58,7 +58,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 | # | Prompt | Original | normal-gpt | Reduction |
 |---|--------|----------|-----------|-----------|
-| 1 | What is 2+2? | 16 | 16 | 0% |
+| 1 | TCP vs UDP? | 2561 | 831 | 67% |
 | 2 | What is Python? | 1525 | 469 | 69% |
 | 3 | Explain how HTTP works | 3783 | 927 | 75% |
 | 4 | How does DNS work? | 3160 | 1039 | 67% |
@@ -73,7 +73,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 | # | Prompt | Original | normal-gpt | Reduction |
 |---|--------|----------|-----------|-----------|
-| 1 | What is 2+2? | 2 | 2 | 0% |
+| 1 | TCP vs UDP? | 1039 | 595 | 42% |
 | 2 | What is Python? | 662 | 452 | 31% |
 | 3 | Explain how HTTP works | 4856 | 1686 | 65% |
 | 4 | How does DNS work? | 3258 | 1574 | 51% |
