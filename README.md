@@ -308,7 +308,7 @@ This is the actual case that motivated building normal-gpt.
 </details>
 
 <details>
-<summary>After (GPT-5.4 + normal-gpt)</summary>
+<summary>After (GPT-5.4 + normal-gpt) — same information, 1/3 the length, no filler, no "如果你要我还可以...", reads like a human analyst wrote it</summary>
 
 > 这段的核心就一句话：
 >
