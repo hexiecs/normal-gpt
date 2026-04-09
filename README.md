@@ -4,7 +4,7 @@ Make GPT talk like a normal person. No filler, no fluff, just the answer.
 
 ## What it does
 
-A single system prompt that transforms GPT's verbose, corporate-sounding output into direct, informative responses. Tested on GPT-4o-mini with **80% reduction in output length** while preserving all useful information.
+A single system prompt that transforms GPT's verbose, corporate-sounding output into direct, informative responses. Tested on GPT-4o-mini (**80% reduction**) and GPT-5.4 (**55% reduction**) while preserving all useful information.
 
 Before:
 > "Python is a high-level, interpreted programming language known for its readability and simplicity. It was created by Guido van Rossum and first released in 1991. Python supports multiple programming paradigms, including procedural, object-oriented, and functional programming..." (1584 chars)
@@ -52,7 +52,9 @@ curl https://api.openai.com/v1/chat/completions \
 
 ## Test results
 
-10 prompts, GPT-4o-mini, temperature=0:
+10 prompts, temperature=0. Measured in characters.
+
+### GPT-4o-mini — average reduction: 80%
 
 | # | Prompt | Original | normal-gpt | Reduction |
 |---|--------|----------|-----------|-----------|
@@ -67,7 +69,22 @@ curl https://api.openai.com/v1/chat/completions \
 | 9 | Redis和Memcached哪个好? | 1762 | 202 | 88% |
 | 10 | Microservices pros/cons | 3083 | 631 | 79% |
 
-**Average reduction: 80%**
+### GPT-5.4 — average reduction: 55%
+
+| # | Prompt | Original | normal-gpt | Reduction |
+|---|--------|----------|-----------|-----------|
+| 1 | What is 2+2? | 2 | 2 | 0% |
+| 2 | What is Python? | 800 | 637 | 20% |
+| 3 | Explain how HTTP works | 3875 | 1180 | 69% |
+| 4 | Write hello world in Go | 87 | 126 | -44% |
+| 5 | Is React better than Vue? | 1251 | 590 | 52% |
+| 6 | 2+2等于几? | 14 | 2 | 85% |
+| 7 | 什么是机器学习? | 1722 | 970 | 43% |
+| 8 | 帮我写个排序算法 | 857 | 1308 | -52% |
+| 9 | Redis和Memcached哪个好? | 3734 | 1417 | 62% |
+| 10 | Microservices pros/cons | 4088 | 1084 | 73% |
+
+GPT-5.4 is already more concise than 4o-mini out of the box. normal-gpt still helps significantly on verbose responses (#3, #5, #9, #10) but may add length to code answers (#4, #8) due to usage examples.
 
 ## License
 
