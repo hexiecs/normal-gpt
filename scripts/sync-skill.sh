@@ -47,4 +47,21 @@ fi
 
 echo "Synced prompt.md and install.sh into $SKILL_DIR/"
 echo "Bumped $SKILL_MANIFEST version field to $VERSION"
+
+# Soft reminder: if prompt.md has any commits newer than the most recent
+# CHANGELOG.md commit, the user probably forgot to update CHANGELOG before
+# publishing. Non-blocking — just a warning, not a gate.
+if git -C "$REPO_ROOT" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  CHANGELOG_LAST=$(git -C "$REPO_ROOT" log -1 --format=%H -- CHANGELOG.md 2>/dev/null || true)
+  if [ -n "$CHANGELOG_LAST" ]; then
+    UNLOGGED=$(git -C "$REPO_ROOT" log "${CHANGELOG_LAST}..HEAD" --oneline -- prompt.md 2>/dev/null | wc -l | tr -d ' ')
+    if [ "${UNLOGGED:-0}" -gt 0 ]; then
+      echo ""
+      echo "⚠ Reminder: prompt.md has $UNLOGGED commit(s) newer than the last CHANGELOG.md entry."
+      echo "  Consider adding a bullet for v$VERSION to CHANGELOG.md before publishing to ClawHub."
+      echo ""
+    fi
+  fi
+fi
+
 echo "Next: clawhub publish ./skill --slug talk-normal --version $VERSION --tags latest --changelog \"...\""
