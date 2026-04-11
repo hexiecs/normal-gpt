@@ -43,6 +43,7 @@ install() {
   fi
 
   local agents_md
+  local action="Installed"
   agents_md=$(find_agents_md)
 
   # If no AGENTS.md found, create one in current directory
@@ -51,10 +52,13 @@ install() {
     echo "No AGENTS.md found. Creating $agents_md"
   fi
 
-  # Check if already installed
+  # If already installed, strip the old block first so re-running this script
+  # performs an in-place update. This makes install.sh idempotent: the first
+  # run installs, every subsequent run upgrades to the latest rules.
   if grep -q "$MARKER_BEGIN" "$agents_md" 2>/dev/null; then
-    echo "talk-normal already installed in $agents_md. Run with --uninstall first to update."
-    exit 0
+    sed -i.bak "/$MARKER_BEGIN/,/$MARKER_END/d" "$agents_md"
+    rm -f "${agents_md}.bak"
+    action="Updated"
   fi
 
   # Append prompt with markers
@@ -65,7 +69,7 @@ install() {
     echo "$MARKER_END"
   } >> "$agents_md"
 
-  echo "Installed to $agents_md"
+  echo "$action talk-normal in $agents_md"
   echo "Start a new conversation to take effect."
 }
 
