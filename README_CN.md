@@ -454,6 +454,10 @@ curl https://api.openai.com/v1/chat/completions \
 
 GPT-5.4 本身就比 4o-mini 简洁不少。talk-normal 在两个模型上都能将啰嗦回复减少 38-87%。
 
+## Star 增长曲线
+
+[![Star History Chart](https://api.star-history.com/svg?repos=hexiecs/talk-normal&type=Date)](https://star-history.com/#hexiecs/talk-normal&Date)
+
 ## 许可证
 
 MIT

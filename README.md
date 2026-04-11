@@ -454,6 +454,10 @@ curl https://api.openai.com/v1/chat/completions \
 
 GPT-5.4 is already more concise than 4o-mini out of the box. talk-normal still cuts verbose responses by 38-87% on both models.
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=hexiecs/talk-normal&type=Date)](https://star-history.com/#hexiecs/talk-normal&Date)
+
 ## License
 
 MIT
