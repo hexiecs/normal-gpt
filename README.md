@@ -8,12 +8,12 @@ Contributions welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) and open a rule su
 
 ## What it does
 
-A single system prompt that transforms verbose, corporate-sounding LLM output into direct, informative responses. Works with any model (GPT, Gemini, LLaMA, etc.). Tested on GPT-4o-mini (**71% reduction**) and GPT-5.4 (**56% reduction**) while preserving all useful information. [See full comparison with all 10 test questions and complete answers](TEST_RESULTS.md).
+A single system prompt that transforms verbose, corporate-sounding LLM output into direct, informative responses. Works with any model (GPT, Gemini, LLaMA, etc.). Tested on GPT-4o-mini (**73% reduction**) and GPT-5.4 (**72% reduction**) while preserving all useful information. [See full comparison with all 10 test questions and complete answers](TEST_RESULTS.md).
 
 **Question: "What is Python?"**
 
 <details>
-<summary>Before (GPT-4o-mini, 1584 chars)</summary>
+<summary>Before (GPT-4o-mini, 1583 chars)</summary>
 
 > Python is a high-level, interpreted programming language known for its readability and simplicity. It was created by Guido van Rossum and first released in 1991. Python supports multiple programming paradigms, including procedural, object-oriented, and functional programming, making it versatile for various applications.
 >
@@ -35,8 +35,8 @@ A single system prompt that transforms verbose, corporate-sounding LLM output in
 
 </details>
 
-After (GPT-4o-mini, 588 chars):
-> Python is a high-level, interpreted programming language known for its readability and versatility. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming. Python is widely used in web development, data analysis, artificial intelligence, scientific computing, and automation due to its extensive libraries and frameworks. Its simplicity makes it an excellent choice for beginners and experienced developers alike.
+After (GPT-4o-mini, 513 chars):
+> Python is a high-level, interpreted programming language known for its readability and simplicity. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming. Python has a large standard library and a vibrant ecosystem of third-party packages, making it suitable for web development, data analysis, artificial intelligence, scientific computing, and more. Its versatility and ease of use make it a popular choice among beginners and experienced developers alike.
 
 ### Real-world example: financial market analysis
 
@@ -424,37 +424,37 @@ curl https://api.openai.com/v1/chat/completions \
 
 10 prompts, temperature=0. Measured in characters. [Full responses for every question](TEST_RESULTS.md).
 
-### GPT-4o-mini — average reduction: 71%
+### GPT-4o-mini — average reduction: 73%
 
 | # | Prompt | Original | talk-normal | Reduction |
 |---|--------|----------|-----------|-----------|
-| 1 | TCP vs UDP? | 2516 | 829 | 67% |
-| 2 | What is Python? | 1584 | 588 | 62% |
-| 3 | Explain how HTTP works | 3713 | 929 | 74% |
-| 4 | How does DNS work? | 3124 | 1040 | 66% |
-| 5 | Is React better than Vue? | 2393 | 294 | 87% |
-| 6 | Docker和虚拟机有什么区别? | 2170 | 819 | 62% |
-| 7 | 什么是机器学习? | 1471 | 545 | 62% |
-| 8 | 什么是区块链? | 1071 | 577 | 46% |
-| 9 | Redis和Memcached哪个好? | 1857 | 333 | 82% |
-| 10 | Microservices pros/cons | 3393 | 691 | 79% |
+| 1 | TCP vs UDP? | 2488 | 630 | 74% |
+| 2 | What is Python? | 1583 | 513 | 67% |
+| 3 | Explain how HTTP works | 3526 | 875 | 75% |
+| 4 | How does DNS work? | 3263 | 1100 | 66% |
+| 5 | Is React better than Vue? | 2389 | 249 | 89% |
+| 6 | Docker和虚拟机有什么区别? | 901 | 297 | 67% |
+| 7 | 什么是机器学习? | 551 | 125 | 77% |
+| 8 | 什么是区块链? | 469 | 115 | 75% |
+| 9 | Redis和Memcached哪个好? | 810 | 129 | 84% |
+| 10 | Microservices pros/cons | 3027 | 922 | 69% |
 
-### GPT-5.4 — average reduction: 56%
+### GPT-5.4 — average reduction: 72%
 
 | # | Prompt | Original | talk-normal | Reduction |
 |---|--------|----------|-----------|-----------|
-| 1 | TCP vs UDP? | 1000 | 611 | 38% |
-| 2 | What is Python? | 751 | 609 | 18% |
-| 3 | Explain how HTTP works | 5222 | 1707 | 67% |
-| 4 | How does DNS work? | 2563 | 1207 | 52% |
-| 5 | Is React better than Vue? | 1158 | 681 | 41% |
-| 6 | Docker和虚拟机有什么区别? | 3052 | 1410 | 53% |
-| 7 | 什么是机器学习? | 1896 | 871 | 54% |
-| 8 | 什么是区块链? | 2312 | 935 | 59% |
-| 9 | Redis和Memcached哪个好? | 3197 | 1154 | 63% |
-| 10 | Microservices pros/cons | 3838 | 1712 | 55% |
+| 1 | TCP vs UDP? | 1076 | 515 | 52% |
+| 2 | What is Python? | 628 | 502 | 20% |
+| 3 | Explain how HTTP works | 5761 | 954 | 83% |
+| 4 | How does DNS work? | 3383 | 731 | 78% |
+| 5 | Is React better than Vue? | 1214 | 466 | 61% |
+| 6 | Docker和虚拟机有什么区别? | 1999 | 514 | 74% |
+| 7 | 什么是机器学习? | 767 | 195 | 74% |
+| 8 | 什么是区块链? | 852 | 391 | 54% |
+| 9 | Redis和Memcached哪个好? | 1629 | 252 | 84% |
+| 10 | Microservices pros/cons | 3489 | 1288 | 63% |
 
-GPT-5.4 is already more concise than 4o-mini out of the box. talk-normal still cuts verbose responses by 38-87% on both models.
+GPT-5.4 is already more concise than 4o-mini out of the box. talk-normal still cuts verbose responses by 20-89% on both models.
 
 ## Rule iteration
 

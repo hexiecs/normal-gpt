@@ -8,12 +8,12 @@
 
 ## 它做什么
 
-一段 system prompt, 把 LLM 啰嗦的、客服腔的输出变成直接、有信息量的回答。适用于任何模型 (GPT, Gemini, LLaMA 等)。在 GPT-4o-mini 上测试 **减少 71%** 输出长度, GPT-5.4 上 **减少 56%**, 同时保留所有有用信息。[查看 10 个测试问题的完整对比](TEST_RESULTS.md)。
+一段 system prompt, 把 LLM 啰嗦的、客服腔的输出变成直接、有信息量的回答。适用于任何模型 (GPT, Gemini, LLaMA 等)。在 GPT-4o-mini 上测试 **减少 73%** 输出长度, GPT-5.4 上 **减少 72%**, 同时保留所有有用信息。[查看 10 个测试问题的完整对比](TEST_RESULTS.md)。
 
 **问题: "What is Python?"**
 
 <details>
-<summary>改造前 (GPT-4o-mini, 1584 字符)</summary>
+<summary>改造前 (GPT-4o-mini, 1583 字符)</summary>
 
 > Python is a high-level, interpreted programming language known for its readability and simplicity. It was created by Guido van Rossum and first released in 1991. Python supports multiple programming paradigms, including procedural, object-oriented, and functional programming, making it versatile for various applications.
 >
@@ -35,8 +35,8 @@
 
 </details>
 
-改造后 (GPT-4o-mini, 588 字符):
-> Python is a high-level, interpreted programming language known for its readability and versatility. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming. Python is widely used in web development, data analysis, artificial intelligence, scientific computing, and automation due to its extensive libraries and frameworks. Its simplicity makes it an excellent choice for beginners and experienced developers alike.
+改造后 (GPT-4o-mini, 513 字符):
+> Python is a high-level, interpreted programming language known for its readability and simplicity. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming. Python has a large standard library and a vibrant ecosystem of third-party packages, making it suitable for web development, data analysis, artificial intelligence, scientific computing, and more. Its versatility and ease of use make it a popular choice among beginners and experienced developers alike.
 
 ### 真实案例: 金融市场分析
 
@@ -424,37 +424,37 @@ curl https://api.openai.com/v1/chat/completions \
 
 10 个问题, temperature=0, 按字符数统计。[查看每个问题的完整回答对比](TEST_RESULTS.md)。
 
-### GPT-4o-mini — 平均减少 71%
+### GPT-4o-mini — 平均减少 73%
 
 | # | 问题 | 原始 | talk-normal | 减少 |
 |---|------|------|-----------|------|
-| 1 | TCP vs UDP? | 2516 | 829 | 67% |
-| 2 | What is Python? | 1584 | 588 | 62% |
-| 3 | Explain how HTTP works | 3713 | 929 | 74% |
-| 4 | How does DNS work? | 3124 | 1040 | 66% |
-| 5 | Is React better than Vue? | 2393 | 294 | 87% |
-| 6 | Docker和虚拟机有什么区别? | 2170 | 819 | 62% |
-| 7 | 什么是机器学习? | 1471 | 545 | 62% |
-| 8 | 什么是区块链? | 1071 | 577 | 46% |
-| 9 | Redis和Memcached哪个好? | 1857 | 333 | 82% |
-| 10 | Microservices pros/cons | 3393 | 691 | 79% |
+| 1 | TCP vs UDP? | 2488 | 630 | 74% |
+| 2 | What is Python? | 1583 | 513 | 67% |
+| 3 | Explain how HTTP works | 3526 | 875 | 75% |
+| 4 | How does DNS work? | 3263 | 1100 | 66% |
+| 5 | Is React better than Vue? | 2389 | 249 | 89% |
+| 6 | Docker和虚拟机有什么区别? | 901 | 297 | 67% |
+| 7 | 什么是机器学习? | 551 | 125 | 77% |
+| 8 | 什么是区块链? | 469 | 115 | 75% |
+| 9 | Redis和Memcached哪个好? | 810 | 129 | 84% |
+| 10 | Microservices pros/cons | 3027 | 922 | 69% |
 
-### GPT-5.4 — 平均减少 56%
+### GPT-5.4 — 平均减少 72%
 
 | # | 问题 | 原始 | talk-normal | 减少 |
 |---|------|------|-----------|------|
-| 1 | TCP vs UDP? | 1000 | 611 | 38% |
-| 2 | What is Python? | 751 | 609 | 18% |
-| 3 | Explain how HTTP works | 5222 | 1707 | 67% |
-| 4 | How does DNS work? | 2563 | 1207 | 52% |
-| 5 | Is React better than Vue? | 1158 | 681 | 41% |
-| 6 | Docker和虚拟机有什么区别? | 3052 | 1410 | 53% |
-| 7 | 什么是机器学习? | 1896 | 871 | 54% |
-| 8 | 什么是区块链? | 2312 | 935 | 59% |
-| 9 | Redis和Memcached哪个好? | 3197 | 1154 | 63% |
-| 10 | Microservices pros/cons | 3838 | 1712 | 55% |
+| 1 | TCP vs UDP? | 1076 | 515 | 52% |
+| 2 | What is Python? | 628 | 502 | 20% |
+| 3 | Explain how HTTP works | 5761 | 954 | 83% |
+| 4 | How does DNS work? | 3383 | 731 | 78% |
+| 5 | Is React better than Vue? | 1214 | 466 | 61% |
+| 6 | Docker和虚拟机有什么区别? | 1999 | 514 | 74% |
+| 7 | 什么是机器学习? | 767 | 195 | 74% |
+| 8 | 什么是区块链? | 852 | 391 | 54% |
+| 9 | Redis和Memcached哪个好? | 1629 | 252 | 84% |
+| 10 | Microservices pros/cons | 3489 | 1288 | 63% |
 
-GPT-5.4 本身就比 4o-mini 简洁不少。talk-normal 在两个模型上都能将啰嗦回复减少 38-87%。
+GPT-5.4 本身就比 4o-mini 简洁不少。talk-normal 在两个模型上都能将啰嗦回复减少 20-89%。
 
 ## 规则迭代
 
